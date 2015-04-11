@@ -1,0 +1,96 @@
+<ion-view view-title="Deposit Calculator"> <ion-content
+	class="padding">
+<style>
+.error-message {
+	color: red;
+}
+
+input.ng-dirty.ng-invalid {
+	border-color: red;
+}
+</style>
+<div class="list" ng-controller="FDCnrl">
+	<form name="userInput" novalidate>
+		<label class="item item-input item-floating-label"> <span
+			class="input-label">Deposit Amount</span> <input type="number"
+			name="txtDeposit" placeholder="Deposit Amount" ng-model="txtDeposit"
+			ng-required="true" ng-pattern="/^[0-9]+$/" ng-change="hideInterest()">
+			<span class="error-message"
+			ng-show="userInput.txtDeposit.$dirty && userInput.txtDeposit.$error.required">This
+				is required field</span> <span class="error-message"
+			ng-show="userInput.txtDeposit.$dirty && userInput.txtDeposit.$error.pattern">Deposit
+				amount should be an integer</span>
+		</label> <label class="item item-input item-floating-label"> <span
+			class="input-label">Annual Rate of Interest</span> <input
+			type="number" name="txtROI" placeholder="Annual Rate of Interest"
+			ng-model="txtROI" ng-required="true" ng-change="hideInterest()"><span
+			class="error-message"
+			ng-show="userInput.txtROI.$dirty && userInput.txtROI.$error.required">This
+				is required field</span>
+		</label> <label class="item item-input item-floating-label"> <span
+			class="input-label">Deposit Period</span> <input type="number"
+			name="txtPeriod" placeholder="Deposit Period" ng-model="txtPeriod"
+			ng-required="true" ng-pattern="/^[0-9]+$/" ng-change="hideInterest()">
+			<span class="error-message"
+			ng-show="userInput.txtPeriod.$dirty && userInput.txtPeriod.$error.required">This
+				is required field</span> <span class="error-message"
+			ng-show="userInput.txtDeposit.$dirty && userInput.txtPeriod.$error.pattern">Deposit
+				period should be an integer</span>
+		</label>
+	</form>
+	<label class="item item-input item-select">
+		<div class="input-label">Deposit Period is in</div> <select
+		ng-init="periodTimeUnitList=periodTimeUnits[2]"
+		ng-model="periodTimeUnitList"
+		ng-options="periodTimeUnit.label for periodTimeUnit in periodTimeUnits"
+		ng-change="hideInterest()"></select>
+	</label>
+	<div>
+		<ul class="list">
+			<li class="item item-toggle">Compounding<label
+				class="toggle toggle-balanced"> <input type="checkbox"
+					checked=false ng-model="isCompounding" ng-init="initCompounding()"
+					ng-change="hideInterest()">
+					<div class="track">
+						<div class="handle"></div>
+					</div>
+			</label>
+			</li>
+		</ul>
+	</div>
+
+
+	<div id="compoundingDiv" ng-show="isCompounding">
+		<label class="item item-input item-select">
+			<div class="input-label">Compounding is</div> <select
+			ng-init="compoundingTimeUnitList=compoundingTimeUnits[1]"
+			ng-model="compoundingTimeUnitList"
+			ng-options="compoundingTimeUnit.label for compoundingTimeUnit in compoundingTimeUnits"
+			ng-change="hideInterest()"></select>
+		</label>
+	</div>
+
+	<!-- Place for Final Amount -->
+	<div ng-show="isInterest">
+		<br />
+		<h3>
+			<center>
+				Investment of {{txtDeposit}} will grow to {{finalAmt}} in
+				{{txtPeriod}} {{periodTimeUnitList.text}} with interest rate of
+				{{txtROI}}% <span ng-show="isCompounding">with
+					{{compoundingTimeUnitList.label | lowercase}} compounding.</span><br />
+				Net interest gained is {{finalInterest}}.<br />
+				<!--  <a ui-sref="tab.compoundingReport">View Complete Report</a> -->
+			</center>
+		</h3>
+		<br />
+	</div>
+	<!-- Place for Final Amount -->
+
+	<div ng-conroller="FDCnrl">
+		<button class="button button-block button-positive" on-tap="FDAmt()"
+			ng-enabled="userInput.$valid" on-click="FDAmt()">Calculate</button>
+		<button class="button button-block button-positive"
+			on-tap="resetForm()">Reset</button>
+	</div>
+</ion-content> </ion-view>

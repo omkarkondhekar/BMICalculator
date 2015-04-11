@@ -1,0 +1,30 @@
+<ion-view view-title="Mortgage Calculator"> <ion-content
+	class="padding">
+<div class="list">
+	<label class="item item-input item-floating-label"> <span
+		class="input-label">Mortgage Amount</span> <input type="text"
+		placeholder="Mortgage Amount">
+	</label> <label class="item item-input item-floating-label"> <span
+		class="input-label">Annual Rate of Interest</span> <input type="text"
+		placeholder="Annual Rate of Interest">
+	</label> <label class="item item-input item-floating-label"> <span
+		class="input-label">Mortgage Period</span> <input type="text"
+		placeholder="Mortgage Period">
+	</label> <label class="item item-input item-select">
+		<div class="input-label">Mortgage Period is in</div> <select>
+			<option>Days</option>
+			<option>Months</option>
+			<option selected>Years</option>
+	</select>
+	</label>
+	<!-- Place for Final Amount -->
+	<div>
+		<ion-nav-view name="mortgageFinalAmt"></ion-nav-view>
+	</div>
+	<!-- Place for Final Amount -->
+
+	<div>
+		<button class="button button-block button-positive">Calculate
+		</button>
+		<button class="button button-block button-positive">Reset</button>
+	</div></ion-view>
