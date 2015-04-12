@@ -1,0 +1,6 @@
+BMICalcBannerAndroid
+
+Ad unit ID: ca-app-pub-9991691920464381/6235965958
+
+Ad unit name: BMICalcInterstitialAndroid
+Ad unit ID: ca-app-pub-9991691920464381/7712699158

@@ -1,0 +1,4 @@
+keytool -genkey -v -keystore my-release-key.keystore -alias SoftBest -keyalg RSA -keysize 2048 -validity 10000
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore my-release-key.keystore myApp.apk SoftBest
+jarsigner -verify -verbose -certs my_application.apk
+zipalign -v 4 your_project_name-unaligned.apk your_project_name.apk

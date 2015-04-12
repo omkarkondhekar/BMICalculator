@@ -23,7 +23,7 @@ angular.module('starter',
 					StatusBar.styleLightContent();
 				}
 
-				/*// AdMob Code Starts
+				// AdMob Code Starts
 				var adId = "ca-app-pub-9991691920464381/6235965958";
 
 				function createAd() {
@@ -51,7 +51,7 @@ angular.module('starter',
 				}
 
 				createAd();
-				// AdMob Code Ends*/
+				// AdMob Code Ends
 			});
 		})
 
