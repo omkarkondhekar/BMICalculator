@@ -35,7 +35,7 @@ angular.module('starter',
 							'bannerAtTop' : false
 						}, function() {
 							am.requestAd({
-								'isTesting' : true
+								'isTesting' : false
 							}, function() {
 								am.showAd(true);
 							}, function() {
